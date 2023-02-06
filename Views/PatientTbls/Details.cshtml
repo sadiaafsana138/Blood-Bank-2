@@ -1,0 +1,66 @@
+﻿@model BloodBank.Models.PatientTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:red;">DETAILS</h2>
+
+<div>
+    <h4 style="color:blue;">Of The Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PBGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PBGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Details", "Edit", new { id = Model.PNum }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

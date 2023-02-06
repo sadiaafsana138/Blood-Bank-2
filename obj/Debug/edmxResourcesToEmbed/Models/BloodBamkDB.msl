@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BloodBankModelStoreContainer" CdmEntityContainer="BloodBankEntities">
+    <EntitySetMapping Name="BloodTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.BloodTbl">
+        <MappingFragment StoreEntitySet="BloodTbl">
+          <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+          <ScalarProperty Name="BStock" ColumnName="BStock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollectTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.CollectTbl">
+        <MappingFragment StoreEntitySet="CollectTbl">
+          <ScalarProperty Name="CNum" ColumnName="CNum" />
+          <ScalarProperty Name="DNum" ColumnName="DNum" />
+          <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonorTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.DonorTbl">
+        <MappingFragment StoreEntitySet="DonorTbl">
+          <ScalarProperty Name="DNum" ColumnName="DNum" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DAge" ColumnName="DAge" />
+          <ScalarProperty Name="DGender" ColumnName="DGender" />
+          <ScalarProperty Name="DPhone" ColumnName="DPhone" />
+          <ScalarProperty Name="DAddress" ColumnName="DAddress" />
+          <ScalarProperty Name="DBGroup" ColumnName="DBGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.EmployeeTbl">
+        <MappingFragment StoreEntitySet="EmployeeTbl">
+          <ScalarProperty Name="EmpNum" ColumnName="EmpNum" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="EmpPass" ColumnName="EmpPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.PatientTbl">
+        <MappingFragment StoreEntitySet="PatientTbl">
+          <ScalarProperty Name="PNum" ColumnName="PNum" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="PAge" ColumnName="PAge" />
+          <ScalarProperty Name="PPhone" ColumnName="PPhone" />
+          <ScalarProperty Name="PGender" ColumnName="PGender" />
+          <ScalarProperty Name="PBGroup" ColumnName="PBGroup" />
+          <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrasferTbls">
+      <EntityTypeMapping TypeName="BloodBankModel.TrasferTbl">
+        <MappingFragment StoreEntitySet="TrasferTbl">
+          <ScalarProperty Name="TNum" ColumnName="TNum" />
+          <ScalarProperty Name="PNum" ColumnName="PNum" />
+          <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

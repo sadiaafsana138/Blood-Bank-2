@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BloodBank.Models.DonorTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:red;">LIST OF DONORS</h2>
+
+<p>
+    @Html.ActionLink("ADD NEW DONOR", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DBGroup)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DNum)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DAge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DGender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DPhone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DBGroup)
+    </td>
+    <td>
+        @Html.ActionLink("Update", "Edit", new { id = item.DNum }) |
+        @Html.ActionLink("Details", "Details", new { id = item.DNum }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.DNum })
+    </td>
+</tr>
+}
+
+</table>

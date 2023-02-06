@@ -1,0 +1,32 @@
+﻿@model BloodBank.Models.BloodTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:red;">DETAILS</h2>
+
+<div>
+    <h4 style="color:blue;">Of Blood Stock</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BGroup)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BStock)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Details", "Edit", new { id = Model.BGroup } ) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

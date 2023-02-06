@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BloodBank.Models.EmployeeTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:red;">LIST OF EMPLOYEES</h2>
+
+<p>
+    @Html.ActionLink("ADD NEW EMPLOYEE", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.EmpId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpPass)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.EmpId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmpPass)
+    </td>
+    <td>
+        @Html.ActionLink("Update", "Edit", new { id = item.EmpNum }) |
+        @Html.ActionLink("Details", "Details", new { id = item.EmpNum }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.EmpNum })
+    </td>
+</tr>
+}
+
+</table>

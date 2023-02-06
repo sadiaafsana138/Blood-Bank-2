@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BloodBank.Models.BloodTbl>
+
+@{
+    ViewBag.Title = "ROBlood";
+}
+
+<h2 style="color:red;">AVAILABLE BLOOD STOCK</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BStock)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BGroup)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BStock)
+    </td>
+    
+</tr>
+}
+
+</table>

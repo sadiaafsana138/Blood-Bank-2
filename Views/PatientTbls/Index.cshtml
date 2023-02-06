@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BloodBank.Models.PatientTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:red;">LIST OF PATIENTS</h2>
+
+<p>
+    @Html.ActionLink("ADD NEW PATIENTS", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PBGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PNum)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PAge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PPhone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PGender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PBGroup)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PAddress)
+    </td>
+    <td>
+        @Html.ActionLink("Update", "Edit", new { id = item.PNum }) |
+        @Html.ActionLink("Details", "Details", new { id = item.PNum }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.PNum })
+    </td>
+</tr>
+}
+
+</table>

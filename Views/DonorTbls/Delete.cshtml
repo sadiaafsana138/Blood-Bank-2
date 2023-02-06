@@ -1,0 +1,73 @@
+﻿@model BloodBank.Models.DonorTbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="color:red;">DELETE</h2>
+
+<h3 style="color:brown;">Are you sure you want to delete?</h3>
+<div>
+    <h4 style="color:blue;">The Donor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DBGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DBGroup)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

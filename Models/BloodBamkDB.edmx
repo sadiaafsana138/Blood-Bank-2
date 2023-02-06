@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BloodBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BloodTbl">
+          <Key>
+            <PropertyRef Name="BGroup" />
+          </Key>
+          <Property Name="BGroup" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="BStock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollectTbl">
+          <Key>
+            <PropertyRef Name="CNum" />
+          </Key>
+          <Property Name="CNum" Type="int" Nullable="false" />
+          <Property Name="DNum" Type="int" Nullable="false" />
+          <Property Name="BGroup" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonorTbl">
+          <Key>
+            <PropertyRef Name="DNum" />
+          </Key>
+          <Property Name="DNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DAge" Type="int" Nullable="false" />
+          <Property Name="DGender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DPhone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DBGroup" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTbl">
+          <Key>
+            <PropertyRef Name="EmpNum" />
+          </Key>
+          <Property Name="EmpNum" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpPass" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientTbl">
+          <Key>
+            <PropertyRef Name="PNum" />
+          </Key>
+          <Property Name="PNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PAge" Type="int" Nullable="false" />
+          <Property Name="PPhone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PGender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PBGroup" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="PAddress" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrasferTbl">
+          <Key>
+            <PropertyRef Name="TNum" />
+          </Key>
+          <Property Name="TNum" Type="int" Nullable="false" />
+          <Property Name="PNum" Type="int" Nullable="false" />
+          <Property Name="BGroup" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CollectTb__BGrou__173876EA">
+          <End Role="BloodTbl" Type="Self.BloodTbl" Multiplicity="1" />
+          <End Role="CollectTbl" Type="Self.CollectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodTbl">
+              <PropertyRef Name="BGroup" />
+            </Principal>
+            <Dependent Role="CollectTbl">
+              <PropertyRef Name="BGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CollectTbl__DNum__164452B1">
+          <End Role="DonorTbl" Type="Self.DonorTbl" Multiplicity="1" />
+          <End Role="CollectTbl" Type="Self.CollectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorTbl">
+              <PropertyRef Name="DNum" />
+            </Principal>
+            <Dependent Role="CollectTbl">
+              <PropertyRef Name="DNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrasferTb__BGrou__1B0907CE">
+          <End Role="BloodTbl" Type="Self.BloodTbl" Multiplicity="1" />
+          <End Role="TrasferTbl" Type="Self.TrasferTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodTbl">
+              <PropertyRef Name="BGroup" />
+            </Principal>
+            <Dependent Role="TrasferTbl">
+              <PropertyRef Name="BGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrasferTbl__PNum__1A14E395">
+          <End Role="PatientTbl" Type="Self.PatientTbl" Multiplicity="1" />
+          <End Role="TrasferTbl" Type="Self.TrasferTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientTbl">
+              <PropertyRef Name="PNum" />
+            </Principal>
+            <Dependent Role="TrasferTbl">
+              <PropertyRef Name="PNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BloodBankModelStoreContainer">
+          <EntitySet Name="BloodTbl" EntityType="Self.BloodTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollectTbl" EntityType="Self.CollectTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonorTbl" EntityType="Self.DonorTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTbl" EntityType="Self.EmployeeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientTbl" EntityType="Self.PatientTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrasferTbl" EntityType="Self.TrasferTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CollectTb__BGrou__173876EA" Association="Self.FK__CollectTb__BGrou__173876EA">
+            <End Role="BloodTbl" EntitySet="BloodTbl" />
+            <End Role="CollectTbl" EntitySet="CollectTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CollectTbl__DNum__164452B1" Association="Self.FK__CollectTbl__DNum__164452B1">
+            <End Role="DonorTbl" EntitySet="DonorTbl" />
+            <End Role="CollectTbl" EntitySet="CollectTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrasferTb__BGrou__1B0907CE" Association="Self.FK__TrasferTb__BGrou__1B0907CE">
+            <End Role="BloodTbl" EntitySet="BloodTbl" />
+            <End Role="TrasferTbl" EntitySet="TrasferTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrasferTbl__PNum__1A14E395" Association="Self.FK__TrasferTbl__PNum__1A14E395">
+            <End Role="PatientTbl" EntitySet="PatientTbl" />
+            <End Role="TrasferTbl" EntitySet="TrasferTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BloodBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BloodTbl">
+          <Key>
+            <PropertyRef Name="BGroup" />
+          </Key>
+          <Property Name="BGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BStock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CollectTbls" Relationship="Self.FK__CollectTb__BGrou__173876EA" FromRole="BloodTbl" ToRole="CollectTbl" />
+          <NavigationProperty Name="TrasferTbls" Relationship="Self.FK__TrasferTb__BGrou__1B0907CE" FromRole="BloodTbl" ToRole="TrasferTbl" />
+        </EntityType>
+        <EntityType Name="CollectTbl">
+          <Key>
+            <PropertyRef Name="CNum" />
+          </Key>
+          <Property Name="CNum" Type="Int32" Nullable="false" />
+          <Property Name="DNum" Type="Int32" Nullable="false" />
+          <Property Name="BGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BloodTbl" Relationship="Self.FK__CollectTb__BGrou__173876EA" FromRole="CollectTbl" ToRole="BloodTbl" />
+          <NavigationProperty Name="DonorTbl" Relationship="Self.FK__CollectTbl__DNum__164452B1" FromRole="CollectTbl" ToRole="DonorTbl" />
+        </EntityType>
+        <EntityType Name="DonorTbl">
+          <Key>
+            <PropertyRef Name="DNum" />
+          </Key>
+          <Property Name="DNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DAge" Type="Int32" Nullable="false" />
+          <Property Name="DGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CollectTbls" Relationship="Self.FK__CollectTbl__DNum__164452B1" FromRole="DonorTbl" ToRole="CollectTbl" />
+        </EntityType>
+        <EntityType Name="EmployeeTbl">
+          <Key>
+            <PropertyRef Name="EmpNum" />
+          </Key>
+          <Property Name="EmpNum" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientTbl">
+          <Key>
+            <PropertyRef Name="PNum" />
+          </Key>
+          <Property Name="PNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAge" Type="Int32" Nullable="false" />
+          <Property Name="PPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PBGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TrasferTbls" Relationship="Self.FK__TrasferTbl__PNum__1A14E395" FromRole="PatientTbl" ToRole="TrasferTbl" />
+        </EntityType>
+        <EntityType Name="TrasferTbl">
+          <Key>
+            <PropertyRef Name="TNum" />
+          </Key>
+          <Property Name="TNum" Type="Int32" Nullable="false" />
+          <Property Name="PNum" Type="Int32" Nullable="false" />
+          <Property Name="BGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BloodTbl" Relationship="Self.FK__TrasferTb__BGrou__1B0907CE" FromRole="TrasferTbl" ToRole="BloodTbl" />
+          <NavigationProperty Name="PatientTbl" Relationship="Self.FK__TrasferTbl__PNum__1A14E395" FromRole="TrasferTbl" ToRole="PatientTbl" />
+        </EntityType>
+        <Association Name="FK__CollectTb__BGrou__173876EA">
+          <End Role="BloodTbl" Type="Self.BloodTbl" Multiplicity="1" />
+          <End Role="CollectTbl" Type="Self.CollectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodTbl">
+              <PropertyRef Name="BGroup" />
+            </Principal>
+            <Dependent Role="CollectTbl">
+              <PropertyRef Name="BGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrasferTb__BGrou__1B0907CE">
+          <End Role="BloodTbl" Type="Self.BloodTbl" Multiplicity="1" />
+          <End Role="TrasferTbl" Type="Self.TrasferTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodTbl">
+              <PropertyRef Name="BGroup" />
+            </Principal>
+            <Dependent Role="TrasferTbl">
+              <PropertyRef Name="BGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CollectTbl__DNum__164452B1">
+          <End Role="DonorTbl" Type="Self.DonorTbl" Multiplicity="1" />
+          <End Role="CollectTbl" Type="Self.CollectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorTbl">
+              <PropertyRef Name="DNum" />
+            </Principal>
+            <Dependent Role="CollectTbl">
+              <PropertyRef Name="DNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrasferTbl__PNum__1A14E395">
+          <End Role="PatientTbl" Type="Self.PatientTbl" Multiplicity="1" />
+          <End Role="TrasferTbl" Type="Self.TrasferTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientTbl">
+              <PropertyRef Name="PNum" />
+            </Principal>
+            <Dependent Role="TrasferTbl">
+              <PropertyRef Name="PNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BloodBankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BloodTbls" EntityType="Self.BloodTbl" />
+          <EntitySet Name="CollectTbls" EntityType="Self.CollectTbl" />
+          <EntitySet Name="DonorTbls" EntityType="Self.DonorTbl" />
+          <EntitySet Name="EmployeeTbls" EntityType="Self.EmployeeTbl" />
+          <EntitySet Name="PatientTbls" EntityType="Self.PatientTbl" />
+          <EntitySet Name="TrasferTbls" EntityType="Self.TrasferTbl" />
+          <AssociationSet Name="FK__CollectTb__BGrou__173876EA" Association="Self.FK__CollectTb__BGrou__173876EA">
+            <End Role="BloodTbl" EntitySet="BloodTbls" />
+            <End Role="CollectTbl" EntitySet="CollectTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrasferTb__BGrou__1B0907CE" Association="Self.FK__TrasferTb__BGrou__1B0907CE">
+            <End Role="BloodTbl" EntitySet="BloodTbls" />
+            <End Role="TrasferTbl" EntitySet="TrasferTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CollectTbl__DNum__164452B1" Association="Self.FK__CollectTbl__DNum__164452B1">
+            <End Role="DonorTbl" EntitySet="DonorTbls" />
+            <End Role="CollectTbl" EntitySet="CollectTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrasferTbl__PNum__1A14E395" Association="Self.FK__TrasferTbl__PNum__1A14E395">
+            <End Role="PatientTbl" EntitySet="PatientTbls" />
+            <End Role="TrasferTbl" EntitySet="TrasferTbls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BloodBankModelStoreContainer" CdmEntityContainer="BloodBankEntities">
+          <EntitySetMapping Name="BloodTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.BloodTbl">
+              <MappingFragment StoreEntitySet="BloodTbl">
+                <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+                <ScalarProperty Name="BStock" ColumnName="BStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollectTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.CollectTbl">
+              <MappingFragment StoreEntitySet="CollectTbl">
+                <ScalarProperty Name="CNum" ColumnName="CNum" />
+                <ScalarProperty Name="DNum" ColumnName="DNum" />
+                <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonorTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.DonorTbl">
+              <MappingFragment StoreEntitySet="DonorTbl">
+                <ScalarProperty Name="DNum" ColumnName="DNum" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DAge" ColumnName="DAge" />
+                <ScalarProperty Name="DGender" ColumnName="DGender" />
+                <ScalarProperty Name="DPhone" ColumnName="DPhone" />
+                <ScalarProperty Name="DAddress" ColumnName="DAddress" />
+                <ScalarProperty Name="DBGroup" ColumnName="DBGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.EmployeeTbl">
+              <MappingFragment StoreEntitySet="EmployeeTbl">
+                <ScalarProperty Name="EmpNum" ColumnName="EmpNum" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmpPass" ColumnName="EmpPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.PatientTbl">
+              <MappingFragment StoreEntitySet="PatientTbl">
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PAge" ColumnName="PAge" />
+                <ScalarProperty Name="PPhone" ColumnName="PPhone" />
+                <ScalarProperty Name="PGender" ColumnName="PGender" />
+                <ScalarProperty Name="PBGroup" ColumnName="PBGroup" />
+                <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrasferTbls">
+            <EntityTypeMapping TypeName="BloodBankModel.TrasferTbl">
+              <MappingFragment StoreEntitySet="TrasferTbl">
+                <ScalarProperty Name="TNum" ColumnName="TNum" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="BGroup" ColumnName="BGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

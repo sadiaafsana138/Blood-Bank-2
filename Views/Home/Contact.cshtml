@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "ADMIN PANEL";
+}
+<h2 style="color:red;">@ViewBag.Title.</h2>
+<h3 style="color:blue;">@ViewBag.Message</h3>
+
+<h5 style="color:black;">DASHBOARD</h5>
+<div class="col-md-offset-2 col-md-10">
+
+    @Html.ActionLink("ADD EMPLOYEE", "Create", "EmployeeTbls")
+
+</div>
+
+<div class="col-md-offset-2 col-md-10">
+
+    @Html.ActionLink("EDIT EMPLOYEE", "Index", "EmployeeTbls")
+
+</div>
+
+<div class="col-md-offset-2 col-md-10">
+
+    @Html.ActionLink("DETAILS ABOUT EMPLOYEE", "Details", "EmployeeTbls")
+
+</div>
+
